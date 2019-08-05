@@ -1,6 +1,8 @@
 ## Cursor paginator
 Two-way cursor pagination with Golang and GORM (bidirections cursor)
 
+[![CircleCI](https://circleci.com/gh/ittus/cursor-paginator.svg?style=shield)](https://circleci.com/gh/ittus/cursor-paginator)
+
 ## Install
 
 ```go
