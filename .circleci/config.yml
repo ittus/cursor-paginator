@@ -3,13 +3,14 @@ jobs:
   test:
     docker:
       - image: circleci/golang:1.12
-        name: annotation-api-v2
+        name: cursor-paginator
     working_directory: ~/cursor-paginator
     steps:
       - checkout
       - run:
           name: install dependencies build go packages (compile)
           command: go build
+      - setup_remote_docker
       - run:
           name: docker and database
           command: docker-compose up -d
