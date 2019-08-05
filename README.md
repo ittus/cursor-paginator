@@ -4,7 +4,7 @@ Two-way cursor pagination with Golang and GORM (bidirections cursor)
 ## Install
 
 ```go
-go get -u https://github.com/ittus/cursor-paginator
+go get -u github.com/ittus/cursor-paginator
 ```
 
 ## How to use 
