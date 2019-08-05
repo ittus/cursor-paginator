@@ -4,19 +4,16 @@ jobs:
     docker:
       - image: circleci/golang:1.12
         name: cursor-paginator
-      - image: circleci/postgres:9.6.2-alpine
-        name: db
-        environment:
-          POSTGRES_DB: test
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-          POSTGRES_INITDB_ARGS: '--encoding=UTF-8'
     working_directory: ~/cursor-paginator
     steps:
       - checkout
       - run:
           name: install dependencies build go packages (compile)
           command: go build
+      - setup_remote_docker
+      - run:
+          name: docker and database
+          command: docker-compose up -d
       - run:
           name: install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
