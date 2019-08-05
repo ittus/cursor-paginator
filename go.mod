@@ -1,4 +1,4 @@
-module cursor-paginator
+module github.com/ittus/cursor-paginator
 
 go 1.12
 
