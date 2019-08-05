@@ -4,16 +4,19 @@ jobs:
     docker:
       - image: circleci/golang:1.12
         name: cursor-paginator
+      - image: circleci/postgres:11.2
+        name: db
+        environment:
+          POSTGRES_DB: test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_INITDB_ARGS: '--encoding=UTF-8'
     working_directory: ~/cursor-paginator
     steps:
       - checkout
       - run:
           name: install dependencies build go packages (compile)
           command: go build
-      - setup_remote_docker
-      - run:
-          name: docker and database
-          command: docker-compose up -d
       - run:
           name: Run test
           command: |
