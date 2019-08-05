@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/golang:1.12
+        name: annotation-api-v2
+    working_directory: ~/cursor-paginator
+    steps:
+      - checkout
+      - run:
+          name: install dependencies build go packages (compile)
+          command: go build
+      - run:
+          name: Run test
+          command: |
+            go test -v -covermode=count -coverprofile=c.out
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
