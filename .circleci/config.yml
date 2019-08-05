@@ -11,6 +11,9 @@ jobs:
           name: install dependencies build go packages (compile)
           command: go build
       - run:
+          name: docker and database
+          command: docker-compose up -d
+      - run:
           name: Run test
           command: |
             go test -v -covermode=count -coverprofile=c.out
